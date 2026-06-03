@@ -3,291 +3,264 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Velora — Where Connections Feel Real</title>
+<title>Tinder Style Swipe UI</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
-
-:root {
-  --bg1: #07070f;
-  --bg2: #0f1025;
-  --accent: #ff3d6e;
-  --accent2: #7c4dff;
-  --glass: rgba(255,255,255,0.08);
-  --text: #ffffff;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 body {
-  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
-  color: var(--text);
-  overflow-x: hidden;
-}
-
-/* ===== NAV ===== */
-nav {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+  font-family: Arial, sans-serif;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 25px 70px;
-}
-
-.logo {
-  font-size: 30px;
-  font-weight: 800;
-  background: linear-gradient(45deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-nav ul {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-}
-
-nav ul li {
-  opacity: 0.8;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-nav ul li:hover {
-  opacity: 1;
-  color: var(--accent);
-}
-
-/* ===== HERO ===== */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 90px 70px;
-  position: relative;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: var(--accent);
-  filter: blur(160px);
-  opacity: 0.2;
-  top: -200px;
-  left: -200px;
-}
-
-.hero-text {
-  max-width: 600px;
-  z-index: 2;
-}
-
-.hero-text h1 {
-  font-size: 64px;
-  line-height: 1.1;
-  font-weight: 800;
-}
-
-.hero-text h1 span {
-  background: linear-gradient(45deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-text p {
-  margin-top: 20px;
-  opacity: 0.75;
-  font-size: 17px;
-}
-
-/* BUTTONS */
-.buttons {
-  margin-top: 30px;
-}
-
-.btn {
-  padding: 14px 26px;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn-primary {
-  background: linear-gradient(45deg, var(--accent), var(--accent2));
-  color: white;
-}
-
-.btn-primary:hover {
-  transform: scale(1.08);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid white;
-  color: white;
-  margin-left: 10px;
-}
-
-.btn-outline:hover {
-  background: white;
-  color: black;
-}
-
-/* ===== FLOATING CARD ===== */
-.card {
-  width: 320px;
-  border-radius: 25px;
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   overflow: hidden;
-  transform: rotate(6deg);
-  transition: 0.4s;
 }
 
-.card:hover {
-  transform: rotate(0deg) scale(1.05);
+/* TOP BAR */
+.topbar {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* STACK AREA */
+.stack {
+  position: relative;
+  width: 320px;
+  height: 460px;
+}
+
+/* CARD */
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  background: #fff;
+  cursor: grab;
+  transition: transform 0.3s ease;
 }
 
 .card img {
   width: 100%;
-  height: 360px;
+  height: 80%;
   object-fit: cover;
 }
 
-.card-info {
-  padding: 15px;
+.card .info {
+  padding: 10px;
+  background: white;
 }
 
-.card-info h3 {
+.name {
   font-size: 20px;
+  font-weight: bold;
 }
 
-/* ===== FEATURES ===== */
-.features {
+.age {
+  color: gray;
+}
+
+/* BUTTONS */
+.actions {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 80px 60px;
-  flex-wrap: wrap;
+  gap: 40px;
 }
 
-.feature {
-  width: 260px;
-  padding: 25px;
-  border-radius: 20px;
-  background: var(--glass);
-  backdrop-filter: blur(15px);
-  transition: 0.3s;
+.btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  transition: 0.2s;
 }
 
-.feature:hover {
-  transform: translateY(-10px);
-  background: rgba(255,255,255,0.12);
+.nope {
+  background: #ff4d4d;
+  color: white;
 }
 
-.feature h3 {
-  color: var(--accent);
-  margin-bottom: 10px;
+.like {
+  background: #4dff88;
+  color: white;
 }
 
-/* ===== MATCH ANIMATION ===== */
-.match {
+.btn:hover {
+  transform: scale(1.1);
+}
+
+/* SWIPE LABELS */
+.label {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 80px;
+  top: 30px;
+  font-size: 40px;
   font-weight: 800;
   opacity: 0;
-  pointer-events: none;
+  transform: rotate(-20deg);
+  transition: 0.2s;
 }
 
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 50px;
-  opacity: 0.6;
+.like-label {
+  left: 20px;
+  color: #4dff88;
+}
+
+.nope-label {
+  right: 20px;
+  color: #ff4d4d;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">Velora</div>
-  <ul>
-    <li>Home</li>
-    <li>Discover</li>
-    <li>Messages</li>
-    <li>Login</li>
-  </ul>
-</nav>
+<div class="topbar">VELORA</div>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Find your <span>perfect match</span> effortlessly.</h1>
-    <p>Modern dating reimagined with beautiful design, real connections, and intelligent matching experiences.</p>
+<div class="stack" id="stack">
 
-    <div class="buttons">
-      <button class="btn btn-primary">Get Started</button>
-      <button class="btn btn-outline">Explore</button>
-    </div>
-  </div>
-
-  <div class="card" id="card">
+  <div class="card">
+    <div class="label like-label">LIKE</div>
+    <div class="label nope-label">NOPE</div>
     <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1"/>
-    <div class="card-info">
-      <h3>Anna, 24</h3>
-      <p>Travel • Coffee • Deep Talks</p>
+    <div class="info">
+      <div class="name">Anna, 24</div>
+      <div class="age">Travel lover • Coffee addict</div>
     </div>
   </div>
-</section>
 
-<section class="features">
-  <div class="feature">
-    <h3>Smart Matching</h3>
-    <p>AI-powered suggestions based on your vibe.</p>
+  <div class="card">
+    <div class="label like-label">LIKE</div>
+    <div class="label nope-label">NOPE</div>
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"/>
+    <div class="info">
+      <div class="name">Mike, 27</div>
+      <div class="age">Gym • Tech • Music</div>
+    </div>
   </div>
 
-  <div class="feature">
-    <h3>Real People</h3>
-    <p>No bots, just authentic connections.</p>
+  <div class="card">
+    <div class="label like-label">LIKE</div>
+    <div class="label nope-label">NOPE</div>
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2"/>
+    <div class="info">
+      <div class="name">Sophie, 22</div>
+      <div class="age">Art • Fashion • Coffee</div>
+    </div>
   </div>
 
-  <div class="feature">
-    <h3>Private & Safe</h3>
-    <p>You control your visibility and interactions.</p>
-  </div>
-</section>
+</div>
 
-<div class="match" id="match">MATCH</div>
-
-<footer>
-  © 2026 Velora — Designed for real connections.
-</footer>
+<div class="actions">
+  <button class="btn nope" onclick="swipe('nope')">✖</button>
+  <button class="btn like" onclick="swipe('like')">❤</button>
+</div>
 
 <script>
-const card = document.getElementById("card");
-const match = document.getElementById("match");
+const cards = document.querySelectorAll(".card");
+let current = cards.length - 1;
 
-card.addEventListener("click", () => {
-  match.style.opacity = "1";
-  match.style.transition = "0.3s";
+// initialize stack
+cards.forEach((card, i) => {
+  card.style.zIndex = i;
+});
+
+let activeCard = cards[current];
+addDrag(activeCard);
+
+function addDrag(card) {
+  let startX = 0;
+  let moveX = 0;
+
+  card.onmousedown = startDrag;
+  card.ontouchstart = startDrag;
+
+  function startDrag(e) {
+    startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+
+    document.onmousemove = onMove;
+    document.ontouchmove = onMove;
+
+    document.onmouseup = endDrag;
+    document.ontouchend = endDrag;
+  }
+
+  function onMove(e) {
+    moveX = e.type.includes("touch") ? e.touches[0].clientX - startX : e.clientX - startX;
+
+    card.style.transform = `translateX(${moveX}px) rotate(${moveX * 0.05}deg)`;
+
+    const like = card.querySelector(".like-label");
+    const nope = card.querySelector(".nope-label");
+
+    if (moveX > 50) {
+      like.style.opacity = 1;
+      nope.style.opacity = 0;
+    } else if (moveX < -50) {
+      like.style.opacity = 0;
+      nope.style.opacity = 1;
+    } else {
+      like.style.opacity = 0;
+      nope.style.opacity = 0;
+    }
+  }
+
+  function endDrag() {
+    document.onmousemove = null;
+    document.onmouseup = null;
+
+    if (moveX > 120) {
+      swipeAction(card, "like");
+    } else if (moveX < -120) {
+      swipeAction(card, "nope");
+    } else {
+      card.style.transform = "translateX(0)";
+    }
+
+    moveX = 0;
+  }
+}
+
+function swipe(type) {
+  swipeAction(activeCard, type);
+}
+
+function swipeAction(card, type) {
+  if (!card) return;
+
+  card.style.transition = "0.5s";
+
+  if (type === "like") {
+    card.style.transform = "translateX(500px) rotate(20deg)";
+  } else {
+    card.style.transform = "translateX(-500px) rotate(-20deg)";
+  }
 
   setTimeout(() => {
-    match.style.opacity = "0";
-  }, 1000);
-});
+    card.remove();
+    current--;
+
+    if (current >= 0) {
+      activeCard = cards[current];
+      addDrag(activeCard);
+    }
+  }, 400);
+}
 </script>
 
 </body>
