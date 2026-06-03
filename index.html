@@ -3,49 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TalkMate - Never Feel Alone</title>
+<title>Haven - Find Real Connections</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--bg:#060816;
+--card:rgba(255,255,255,.06);
+--border:rgba(255,255,255,.08);
+--text:#ffffff;
+--muted:#a8b1cf;
+--primary:#7c3aed;
+--secondary:#2563eb;
+}
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-background:linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);
-color:white;
+background:var(--bg);
+color:var(--text);
 overflow-x:hidden;
 }
 
-/* Floating Background */
+/* Animated Background */
 
-.circle{
+.blur{
 position:fixed;
 border-radius:50%;
-filter:blur(80px);
-opacity:.25;
-animation:float 10s infinite ease-in-out;
+filter:blur(140px);
+z-index:-1;
+opacity:.4;
 }
 
-.c1{
-width:300px;
-height:300px;
-background:#6366f1;
-top:-100px;
+.blur1{
+width:400px;
+height:400px;
+background:#7c3aed;
+top:-150px;
 left:-100px;
+animation:float 8s infinite ease-in-out;
 }
 
-.c2{
-width:350px;
-height:350px;
-background:#ec4899;
-bottom:-100px;
-right:-100px;
+.blur2{
+width:500px;
+height:500px;
+background:#2563eb;
+right:-150px;
+bottom:-150px;
+animation:float 10s infinite ease-in-out;
 }
 
 @keyframes float{
@@ -57,123 +73,168 @@ transform:translateY(-40px);
 /* Navbar */
 
 nav{
-padding:25px 8%;
+position:sticky;
+top:0;
+z-index:100;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:22px 8%;
+background:rgba(6,8,22,.7);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
-font-size:30px;
-font-weight:700;
+font-size:28px;
+font-weight:800;
 }
 
 .logo span{
-color:#818cf8;
+color:#8b5cf6;
 }
 
-.nav-btn{
-text-decoration:none;
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+nav a{
 color:white;
-padding:12px 24px;
-background:rgba(255,255,255,.1);
-backdrop-filter:blur(10px);
-border-radius:30px;
+text-decoration:none;
+}
+
+.btn{
+display:inline-block;
+padding:14px 26px;
+border-radius:14px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#7c3aed,#2563eb);
+color:white;
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+}
+
+.btn-secondary{
+border:1px solid rgba(255,255,255,.15);
+color:white;
 }
 
 /* Hero */
 
 .hero{
-min-height:90vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:40px;
+padding:0 8%;
 }
 
 .hero-content{
-max-width:900px;
+max-width:950px;
 }
 
-.hero h1{
-font-size:4.5rem;
-line-height:1.1;
+.badge{
+display:inline-block;
+padding:10px 18px;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.1);
+border-radius:999px;
 margin-bottom:25px;
 }
 
-.hero span{
-color:#a5b4fc;
+.hero h1{
+font-size:5rem;
+line-height:1.05;
+margin-bottom:25px;
+}
+
+.gradient{
+background:linear-gradient(135deg,#a78bfa,#60a5fa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
 font-size:1.2rem;
-color:#d1d5db;
-margin-bottom:35px;
+color:var(--muted);
+max-width:700px;
+margin:auto;
+margin-bottom:40px;
 }
 
 .hero-buttons{
 display:flex;
-gap:15px;
 justify-content:center;
+gap:15px;
 flex-wrap:wrap;
 }
 
-.btn{
-padding:16px 35px;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
+/* Sections */
+
+.section{
+padding:100px 8%;
 }
 
-.primary{
-background:#6366f1;
-color:white;
+.section-title{
+text-align:center;
+font-size:3rem;
+margin-bottom:20px;
 }
 
-.secondary{
-background:rgba(255,255,255,.1);
-backdrop-filter:blur(10px);
-color:white;
+.section-sub{
+text-align:center;
+max-width:700px;
+margin:auto;
+color:var(--muted);
+margin-bottom:60px;
 }
 
 /* Stats */
 
 .stats{
-padding:50px 8%;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
 .stat{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(15px);
+background:var(--card);
+border:1px solid var(--border);
 padding:30px;
-border-radius:20px;
+border-radius:24px;
+backdrop-filter:blur(20px);
 text-align:center;
 }
 
 .stat h2{
 font-size:2rem;
-color:#a5b4fc;
+margin-bottom:8px;
 }
 
-/* Features */
+/* Grid */
 
-.features{
-padding:80px 8%;
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 }
 
 .card{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.1);
-padding:35px;
-border-radius:25px;
+background:var(--card);
+border:1px solid var(--border);
+padding:30px;
+border-radius:24px;
+backdrop-filter:blur(20px);
 transition:.3s;
 }
 
@@ -186,50 +247,131 @@ margin-bottom:15px;
 }
 
 .card p{
-color:#d1d5db;
+color:var(--muted);
+line-height:1.7;
+}
+
+/* How It Works */
+
+.steps{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.step{
+padding:30px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:20px;
+text-align:center;
+}
+
+.step-number{
+width:60px;
+height:60px;
+margin:auto;
+margin-bottom:15px;
+border-radius:50%;
+background:linear-gradient(135deg,#7c3aed,#2563eb);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
 }
 
 /* Testimonials */
 
-.testimonials{
-padding:80px 8%;
-}
-
-.section-title{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:50px;
-}
-
-.testimonial-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-}
-
 .testimonial{
-background:rgba(255,255,255,.08);
+background:var(--card);
+border:1px solid var(--border);
 padding:30px;
 border-radius:20px;
-backdrop-filter:blur(15px);
 }
 
 .testimonial p{
-color:#d1d5db;
+color:var(--muted);
 margin-bottom:15px;
 }
 
 .user{
-font-weight:600;
-color:#a5b4fc;
+font-weight:700;
+}
+
+/* FAQ */
+
+.faq{
+background:var(--card);
+padding:25px;
+border-radius:18px;
+margin-bottom:15px;
+border:1px solid var(--border);
+}
+
+.faq h3{
+margin-bottom:10px;
+}
+
+.faq p{
+color:var(--muted);
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+padding:120px 8%;
+}
+
+.cta-box{
+background:linear-gradient(
+135deg,
+rgba(124,58,237,.2),
+rgba(37,99,235,.2)
+);
+padding:60px;
+border-radius:30px;
+border:1px solid var(--border);
+}
+
+.cta h2{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+.cta p{
+max-width:700px;
+margin:auto;
+margin-bottom:30px;
+color:var(--muted);
 }
 
 /* Footer */
 
 footer{
-padding:50px;
+padding:60px 8%;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+}
+
+.footer-grid h4{
+margin-bottom:15px;
+}
+
+.footer-grid p{
+color:var(--muted);
+margin-bottom:10px;
+}
+
+.copy{
 text-align:center;
-color:#94a3b8;
+margin-top:40px;
+color:var(--muted);
 }
 
 @media(max-width:768px){
@@ -238,8 +380,12 @@ color:#94a3b8;
 font-size:3rem;
 }
 
-.hero p{
-font-size:1rem;
+.section-title{
+font-size:2rem;
+}
+
+nav ul{
+display:none;
 }
 
 }
@@ -248,126 +394,285 @@ font-size:1rem;
 </head>
 <body>
 
-<div class="circle c1"></div>
-<div class="circle c2"></div>
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
 
 <nav>
-<div class="logo">Talk<span>Mate</span></div>
-<a href="login.html" class="nav-btn">Login</a>
+
+<div class="logo">
+Ha<span>ven</span>
+</div>
+
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ul>
+
+<a href="#" class="btn btn-primary">Get Started</a>
+
 </nav>
 
 <section class="hero">
 
 <div class="hero-content">
 
-<h1>Someone Is Ready To <span>Listen</span></h1>
+<div class="badge">
+Trusted By Thousands Worldwide
+</div>
+
+<h1>
+Find <span class="gradient">Support</span>,
+Friendship,
+Dating &
+Meaningful Connections
+</h1>
 
 <p>
-Feeling lonely, stressed, anxious, or overwhelmed?
-Connect with compassionate listeners and have meaningful conversations when you need them most.
+Whether you're feeling lonely, looking for friendship,
+dating, networking, or simply need someone who understands,
+Haven connects you with real people ready to talk.
 </p>
 
 <div class="hero-buttons">
-<a href="register.html" class="btn primary">Get Started</a>
-<a href="#features" class="btn secondary">Learn More</a>
+<a href="#" class="btn btn-primary">Join Free</a>
+<a href="#" class="btn btn-secondary">Become A Listener</a>
 </div>
 
 </div>
 
 </section>
 
-<section class="stats">
+<section class="section">
+
+<div class="stats">
 
 <div class="stat">
-<h2>10K+</h2>
+<h2>50K+</h2>
 <p>Conversations</p>
 </div>
 
 <div class="stat">
-<h2>2K+</h2>
-<p>Active Listeners</p>
+<h2>12K+</h2>
+<p>Active Members</p>
 </div>
 
 <div class="stat">
-<h2>98%</h2>
-<p>Satisfaction Rate</p>
+<h2>4.9★</h2>
+<p>User Rating</p>
 </div>
 
 <div class="stat">
-<h2>24/7</h2>
-<p>Support Available</p>
+<h2>120+</h2>
+<p>Countries</p>
+</div>
+
 </div>
 
 </section>
 
-<section id="features" class="features">
+<section class="section" id="features">
+
+<h2 class="section-title">
+One Platform. Endless Connections.
+</h2>
+
+<p class="section-sub">
+Choose the type of connection you're looking for.
+</p>
+
+<div class="grid">
 
 <div class="card">
-<h3>💬 Private Chats</h3>
-<p>Secure one-on-one conversations with people who genuinely want to listen.</p>
+<h3>🫂 Emotional Support</h3>
+<p>Talk with compassionate listeners during difficult moments.</p>
 </div>
 
 <div class="card">
-<h3>🔒 Escrow Payments</h3>
-<p>Your payment stays protected until the conversation is completed.</p>
+<h3>🤝 Friendship</h3>
+<p>Meet genuine people and build lasting friendships.</p>
 </div>
 
 <div class="card">
-<h3>⭐ Verified Listeners</h3>
-<p>Ratings and reviews help build trust within the community.</p>
+<h3>💕 Dating</h3>
+<p>Discover meaningful relationships with compatible people.</p>
 </div>
 
 <div class="card">
-<h3>⚡ Instant Matching</h3>
-<p>Find someone available to talk within minutes.</p>
+<h3>🔥 Casual Connections</h3>
+<p>Connect with adults interested in casual social experiences.</p>
 </div>
 
 <div class="card">
-<h3>🛡 Safe Community</h3>
-<p>Moderation and reporting systems help keep conversations respectful.</p>
+<h3>🎮 Gaming Partners</h3>
+<p>Find teammates and friends for your favorite games.</p>
 </div>
 
 <div class="card">
-<h3>🌍 Global Reach</h3>
-<p>Connect with supportive people from around the world.</p>
+<h3>💼 Networking</h3>
+<p>Grow your professional circle through authentic conversations.</p>
+</div>
+
 </div>
 
 </section>
 
-<section class="testimonials">
+<section class="section" id="how">
 
-<h2 class="section-title">What People Say</h2>
+<h2 class="section-title">
+How It Works
+</h2>
 
-<div class="testimonial-grid">
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<h3>Create A Request</h3>
+<p>Tell the community what you're looking for.</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<h3>Get Matched</h3>
+<p>People can apply or connect with you instantly.</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<h3>Start Chatting</h3>
+<p>Use secure messaging, voice, or video.</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<h3>Complete Session</h3>
+<p>Release payment only when you're satisfied.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="reviews">
+
+<h2 class="section-title">
+What Members Say
+</h2>
+
+<div class="grid">
 
 <div class="testimonial">
 <p>
-"I felt completely overwhelmed. Within minutes I found someone who listened without judgment."
+"This platform helped me find someone to talk to when I felt completely overwhelmed."
 </p>
-<div class="user">— Sarah</div>
+<div class="user">Sarah M.</div>
 </div>
 
 <div class="testimonial">
 <p>
-"The escrow payment system gave me confidence that everything would be fair."
+"I made real friends within a week. The experience feels safe and premium."
 </p>
-<div class="user">— David</div>
+<div class="user">James K.</div>
 </div>
 
 <div class="testimonial">
 <p>
-"Sometimes you just need someone to talk to. This platform made that easy."
+"The escrow payment system makes everything trustworthy."
 </p>
-<div class="user">— Michael</div>
+<div class="user">Amina T.</div>
 </div>
+
+</div>
+
+</section>
+
+<section class="section" id="faq">
+
+<h2 class="section-title">
+Frequently Asked Questions
+</h2>
+
+<div class="faq">
+<h3>Is Haven free?</h3>
+<p>Creating an account is free. Premium services may require payment.</p>
+</div>
+
+<div class="faq">
+<h3>How are payments protected?</h3>
+<p>Funds remain secure until the session is completed.</p>
+</div>
+
+<div class="faq">
+<h3>Can I use Haven for dating?</h3>
+<p>Yes. Users can choose friendship, dating, support, networking, and more.</p>
+</div>
+
+<div class="faq">
+<h3>Are conversations private?</h3>
+<p>Your privacy and security are a core part of the platform.</p>
+</div>
+
+</section>
+
+<section class="cta">
+
+<div class="cta-box">
+
+<h2>
+Your Next Meaningful Conversation Starts Here
+</h2>
+
+<p>
+Join thousands of people finding support, friendship,
+relationships, and real connections every day.
+</p>
+
+<a href="#" class="btn btn-primary">
+Create Your Account
+</a>
 
 </div>
 
 </section>
 
 <footer>
-© 2026 TalkMate • Real Conversations. Real Support.
+
+<div class="footer-grid">
+
+<div>
+<h4>Haven</h4>
+<p>Real conversations. Real connections.</p>
+</div>
+
+<div>
+<h4>Company</h4>
+<p>About</p>
+<p>Careers</p>
+<p>Press</p>
+</div>
+
+<div>
+<h4>Resources</h4>
+<p>Privacy</p>
+<p>Terms</p>
+<p>Safety</p>
+</div>
+
+<div>
+<h4>Support</h4>
+<p>Help Center</p>
+<p>Contact</p>
+<p>Community</p>
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 Haven. All Rights Reserved.
+</div>
+
 </footer>
 
 </body>
-</html>
+  </html>
