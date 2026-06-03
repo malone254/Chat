@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Marketplace</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+        }
+
+        header {
+            background: #4f46e5;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>TalkMate</h1>
+    <p>Find someone to listen and support you</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Create Support Request</h2>
+
+        <input type="text" id="title" placeholder="Title">
+
+        <textarea id="description"
+            placeholder="Describe what you're going through"></textarea>
+
+        <input type="number" id="budget" placeholder="Offer Amount ($)">
+
+        <button onclick="createPost()">Post Request</button>
+    </div>
+
+    <h2>Available Requests</h2>
+
+    <div id="posts"></div>
+
+</div>
+
+<script>
+
+let requests = [];
+
+function createPost() {
+
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const budget = document.getElementById("budget").value;
+
+    if (!title || !description || !budget) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    requests.push({
+        title,
+        description,
+        budget
+    });
+
+    renderPosts();
+
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("budget").value = "";
+}
+
+function renderPosts() {
+
+    const posts = document.getElementById("posts");
+
+    posts.innerHTML = "";
+
+    requests.forEach((request, index) => {
+
+        posts.innerHTML += `
+            <div class="card">
+                <h3>${request.title}</h3>
+                <p>${request.description}</p>
+                <p class="price">$${request.budget}</p>
+
+                <button onclick="acceptRequest(${index})">
+                    Accept Request
+                </button>
+            </div>
+        `;
+    });
+}
+
+function acceptRequest(index) {
+    alert("Request accepted! Chat feature coming next.");
+}
+
+</script>
+
+</body>
+  </html>
