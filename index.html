@@ -1,500 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SoulSync - Chat, Connect & Date</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Velora — Where Connections Feel Real</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+:root {
+  --bg1: #07070f;
+  --bg2: #0f1025;
+  --accent: #ff3d6e;
+  --accent2: #7c4dff;
+  --glass: rgba(255,255,255,0.08);
+  --text: #ffffff;
 }
 
-html{
-scroll-behavior:smooth;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-body{
-background:#0b1020;
-color:white;
-overflow-x:hidden;
+body {
+  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-/* NAVBAR */
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 8%;
-position:fixed;
-width:100%;
-top:0;
-z-index:1000;
-backdrop-filter:blur(20px);
-background:rgba(11,16,32,.7);
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 70px;
 }
 
-.logo{
-font-size:2rem;
-font-weight:800;
+.logo {
+  font-size: 30px;
+  font-weight: 800;
+  background: linear-gradient(45deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.logo span{
-color:#00d4ff;
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
 }
 
-.nav-links{
-display:flex;
-gap:30px;
+nav ul li {
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.nav-links a{
-color:white;
-text-decoration:none;
-transition:.3s;
+nav ul li:hover {
+  opacity: 1;
+  color: var(--accent);
 }
 
-.nav-links a:hover{
-color:#00d4ff;
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 90px 70px;
+  position: relative;
 }
 
-.btn{
-padding:14px 28px;
-border:none;
-border-radius:50px;
-background:linear-gradient(135deg,#6d5dfc,#00d4ff);
-color:white;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--accent);
+  filter: blur(160px);
+  opacity: 0.2;
+  top: -200px;
+  left: -200px;
 }
 
-.btn:hover{
-transform:translateY(-4px);
+.hero-text {
+  max-width: 600px;
+  z-index: 2;
 }
 
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding:120px 8%;
-background:
-radial-gradient(circle at top left,#6d5dfc66,transparent 30%),
-radial-gradient(circle at bottom right,#00d4ff44,transparent 30%),
-#0b1020;
+.hero-text h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  font-weight: 800;
 }
 
-.hero-content{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-width:100%;
+.hero-text h1 span {
+  background: linear-gradient(45deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero h1{
-font-size:5rem;
-line-height:1;
-margin-bottom:25px;
+.hero-text p {
+  margin-top: 20px;
+  opacity: 0.75;
+  font-size: 17px;
 }
 
-.gradient{
-background:linear-gradient(90deg,#00d4ff,#8b5cf6,#ff4fd8);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+/* BUTTONS */
+.buttons {
+  margin-top: 30px;
 }
 
-.hero p{
-font-size:1.1rem;
-color:#cbd5e1;
-line-height:1.8;
-margin-bottom:30px;
+.btn {
+  padding: 14px 26px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
-.hero-buttons{
-display:flex;
-gap:15px;
+.btn-primary {
+  background: linear-gradient(45deg, var(--accent), var(--accent2));
+  color: white;
 }
 
-.secondary{
-background:transparent;
-border:1px solid rgba(255,255,255,.2);
+.btn-primary:hover {
+  transform: scale(1.08);
 }
 
-.phone{
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.1);
-padding:25px;
-border-radius:30px;
-backdrop-filter:blur(20px);
+.btn-outline {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  margin-left: 10px;
 }
 
-.chat{
-margin-top:20px;
+.btn-outline:hover {
+  background: white;
+  color: black;
 }
 
-.message{
-padding:14px;
-border-radius:18px;
-margin-bottom:12px;
-width:fit-content;
-max-width:80%;
+/* ===== FLOATING CARD ===== */
+.card {
+  width: 320px;
+  border-radius: 25px;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+  transform: rotate(6deg);
+  transition: 0.4s;
 }
 
-.left{
-background:#1e293b;
+.card:hover {
+  transform: rotate(0deg) scale(1.05);
 }
 
-.right{
-background:linear-gradient(135deg,#6d5dfc,#00d4ff);
-margin-left:auto;
+.card img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
 }
 
-/* STATS */
-
-.stats{
-padding:80px 8%;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-background:#111827;
+.card-info {
+  padding: 15px;
 }
 
-.stat{
-background:#1f2937;
-padding:30px;
-border-radius:20px;
-text-align:center;
+.card-info h3 {
+  font-size: 20px;
 }
 
-.stat h2{
-font-size:2.5rem;
-color:#00d4ff;
+/* ===== FEATURES ===== */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 80px 60px;
+  flex-wrap: wrap;
 }
 
-/* FEATURES */
-
-.features{
-padding:120px 8%;
+.feature {
+  width: 260px;
+  padding: 25px;
+  border-radius: 20px;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  transition: 0.3s;
 }
 
-.section-title{
-text-align:center;
-margin-bottom:60px;
+.feature:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.12);
 }
 
-.section-title h2{
-font-size:3rem;
-margin-bottom:10px;
+.feature h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+/* ===== MATCH ANIMATION ===== */
+.match {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-weight: 800;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.card{
-background:#1f2937;
-padding:35px;
-border-radius:25px;
-transition:.3s;
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 50px;
+  opacity: 0.6;
 }
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-.card h3{
-margin:15px 0;
-}
-
-/* TESTIMONIALS */
-
-.testimonials{
-padding:120px 8%;
-background:#111827;
-}
-
-.testimonial-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-}
-
-.testimonial{
-background:#1f2937;
-padding:30px;
-border-radius:25px;
-}
-
-/* CTA */
-
-.cta{
-padding:120px 8%;
-text-align:center;
-}
-
-.cta h2{
-font-size:3.5rem;
-margin-bottom:20px;
-}
-
-/* FOOTER */
-
-footer{
-padding:40px;
-text-align:center;
-background:#111827;
-color:#94a3b8;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero-content{
-grid-template-columns:1fr;
-text-align:center;
-}
-
-.hero h1{
-font-size:3rem;
-}
-
-.hero-buttons{
-justify-content:center;
-}
-
-.nav-links{
-display:none;
-}
-
-.stats{
-grid-template-columns:repeat(2,1fr);
-}
-}
-
 </style>
 </head>
 
 <body>
 
 <nav>
-
-<div class="logo">
-Soul<span>Sync</span>
-</div>
-
-<div class="nav-links">
-<a href="#features">Features</a>
-<a href="#community">Community</a>
-<a href="#stories">Stories</a>
-<a href="#contact">Contact</a>
-</div>
-
-<button class="btn">
-Join Free
-</button>
-
+  <div class="logo">Velora</div>
+  <ul>
+    <li>Home</li>
+    <li>Discover</li>
+    <li>Messages</li>
+    <li>Login</li>
+  </ul>
 </nav>
 
 <section class="hero">
+  <div class="hero-text">
+    <h1>Find your <span>perfect match</span> effortlessly.</h1>
+    <p>Modern dating reimagined with beautiful design, real connections, and intelligent matching experiences.</p>
 
-<div class="hero-content">
+    <div class="buttons">
+      <button class="btn btn-primary">Get Started</button>
+      <button class="btn btn-outline">Explore</button>
+    </div>
+  </div>
 
-<div>
-
-<h1>
-Connect, Heal &
-<span class="gradient">
-Find Real Relationships
-</span>
-</h1>
-
-<p>
-SoulSync is a safe space where people can chat,
-make friends, reduce stress, join communities,
-and discover meaningful relationships.
-</p>
-
-<div class="hero-buttons">
-<button class="btn">Get Started</button>
-<button class="btn secondary">Learn More</button>
-</div>
-
-</div>
-
-<div class="phone">
-
-<h2>💜 Live Chat</h2>
-
-<div class="chat">
-
-<div class="message left">
-Feeling stressed today...
-</div>
-
-<div class="message right">
-You're not alone ❤️
-</div>
-
-<div class="message left">
-Anyone want to talk?
-</div>
-
-<div class="message right">
-Join our support community 🌟
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+  <div class="card" id="card">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1"/>
+    <div class="card-info">
+      <h3>Anna, 24</h3>
+      <p>Travel • Coffee • Deep Talks</p>
+    </div>
+  </div>
 </section>
 
-<section class="stats">
+<section class="features">
+  <div class="feature">
+    <h3>Smart Matching</h3>
+    <p>AI-powered suggestions based on your vibe.</p>
+  </div>
 
-<div class="stat">
-<h2>150K+</h2>
-<p>Members</p>
-</div>
+  <div class="feature">
+    <h3>Real People</h3>
+    <p>No bots, just authentic connections.</p>
+  </div>
 
-<div class="stat">
-<h2>2M+</h2>
-<p>Messages</p>
-</div>
-
-<div class="stat">
-<h2>95%</h2>
-<p>Positive Reviews</p>
-</div>
-
-<div class="stat">
-<h2>120+</h2>
-<p>Countries</p>
-</div>
-
+  <div class="feature">
+    <h3>Private & Safe</h3>
+    <p>You control your visibility and interactions.</p>
+  </div>
 </section>
 
-<section class="features" id="features">
-
-<div class="section-title">
-<h2>Everything You Need</h2>
-<p>Built for friendship, support and dating.</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>💬 Real-Time Chat</h3>
-<p>Instant messaging with friends and communities.</p>
-</div>
-
-<div class="card">
-<h3>❤️ Smart Matching</h3>
-<p>Meet compatible people with similar interests.</p>
-</div>
-
-<div class="card">
-<h3>🧘 Wellness Support</h3>
-<p>Daily motivation and stress-relief groups.</p>
-</div>
-
-<div class="card">
-<h3>🔒 Safe Community</h3>
-<p>Strong moderation and privacy controls.</p>
-</div>
-
-<div class="card">
-<h3>🌍 Global Network</h3>
-<p>Connect with people worldwide.</p>
-</div>
-
-<div class="card">
-<h3>🎯 Interest Groups</h3>
-<p>Join communities around your passions.</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="testimonials">
-
-<div class="section-title">
-<h2>Success Stories</h2>
-</div>
-
-<div class="testimonial-grid">
-
-<div class="testimonial">
-⭐⭐⭐⭐⭐
-<p>
-"I found amazing friends and a positive support
-network when I needed it most."
-</p>
-</div>
-
-<div class="testimonial">
-⭐⭐⭐⭐⭐
-<p>
-"The dating experience feels genuine and safe."
-</p>
-</div>
-
-<div class="testimonial">
-⭐⭐⭐⭐⭐
-<p>
-"A beautiful community that actually cares."
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="cta">
-
-<h2>
-Start Your Journey Today
-</h2>
-
-<p>
-Join thousands of people building meaningful
-connections every day.
-</p>
-
-<br>
-
-<button class="btn">
-Create Free Account
-</button>
-
-</section>
+<div class="match" id="match">MATCH</div>
 
 <footer>
-
-<h3>SoulSync</h3>
-
-<br>
-
-<p>
-© 2026 SoulSync. All Rights Reserved.
-</p>
-
+  © 2026 Velora — Designed for real connections.
 </footer>
 
+<script>
+const card = document.getElementById("card");
+const match = document.getElementById("match");
+
+card.addEventListener("click", () => {
+  match.style.opacity = "1";
+  match.style.transition = "0.3s";
+
+  setTimeout(() => {
+    match.style.opacity = "0";
+  }, 1000);
+});
+</script>
+
 </body>
-    </html>
+</html>
