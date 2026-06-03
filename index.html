@@ -3,38 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tinder Style Swipe UI</title>
+<title>Tinder Clone</title>
 
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+  font-family: Arial;
   overflow: hidden;
 }
 
-/* TOP BAR */
-.topbar {
+/* HEADER */
+.header {
   position: absolute;
   top: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
   color: white;
   font-size: 22px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
-/* STACK AREA */
-.stack {
+/* DECK */
+.deck {
   position: relative;
   width: 320px;
-  height: 460px;
+  height: 480px;
 }
 
 /* CARD */
@@ -44,8 +41,8 @@ body {
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  background: #fff;
+  background: white;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   cursor: grab;
   transition: transform 0.3s ease;
 }
@@ -56,9 +53,8 @@ body {
   object-fit: cover;
 }
 
-.card .info {
+.info {
   padding: 10px;
-  background: white;
 }
 
 .name {
@@ -71,12 +67,10 @@ body {
 }
 
 /* BUTTONS */
-.actions {
+.buttons {
   position: absolute;
   bottom: 30px;
-  width: 100%;
   display: flex;
-  justify-content: center;
   gap: 40px;
 }
 
@@ -88,7 +82,6 @@ body {
   font-size: 22px;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  transition: 0.2s;
 }
 
 .nope {
@@ -101,18 +94,13 @@ body {
   color: white;
 }
 
-.btn:hover {
-  transform: scale(1.1);
-}
-
-/* SWIPE LABELS */
+/* LABELS */
 .label {
   position: absolute;
-  top: 30px;
+  top: 20px;
   font-size: 40px;
   font-weight: 800;
   opacity: 0;
-  transform: rotate(-20deg);
   transition: 0.2s;
 }
 
@@ -130,83 +118,87 @@ body {
 
 <body>
 
-<div class="topbar">VELORA</div>
+<div class="header">VELORA</div>
 
-<div class="stack" id="stack">
+<div class="deck" id="deck">
 
   <div class="card">
     <div class="label like-label">LIKE</div>
     <div class="label nope-label">NOPE</div>
+
     <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1"/>
     <div class="info">
-      <div class="name">Anna, 24</div>
-      <div class="age">Travel lover • Coffee addict</div>
+      <div class="name">Anna</div>
+      <div class="age">24 • Travel lover</div>
     </div>
   </div>
 
   <div class="card">
     <div class="label like-label">LIKE</div>
     <div class="label nope-label">NOPE</div>
+
     <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"/>
     <div class="info">
-      <div class="name">Mike, 27</div>
-      <div class="age">Gym • Tech • Music</div>
+      <div class="name">Mike</div>
+      <div class="age">27 • Gym & Music</div>
     </div>
   </div>
 
   <div class="card">
     <div class="label like-label">LIKE</div>
     <div class="label nope-label">NOPE</div>
+
     <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2"/>
     <div class="info">
-      <div class="name">Sophie, 22</div>
-      <div class="age">Art • Fashion • Coffee</div>
+      <div class="name">Sophie</div>
+      <div class="age">22 • Artist</div>
     </div>
   </div>
 
 </div>
 
-<div class="actions">
+<div class="buttons">
   <button class="btn nope" onclick="swipe('nope')">✖</button>
   <button class="btn like" onclick="swipe('like')">❤</button>
 </div>
 
 <script>
-const cards = document.querySelectorAll(".card");
+let cards = document.querySelectorAll(".card");
 let current = cards.length - 1;
 
-// initialize stack
 cards.forEach((card, i) => {
   card.style.zIndex = i;
 });
 
-let activeCard = cards[current];
-addDrag(activeCard);
+let active = cards[current];
+addDrag(active);
 
 function addDrag(card) {
   let startX = 0;
   let moveX = 0;
 
-  card.onmousedown = startDrag;
-  card.ontouchstart = startDrag;
+  card.onmousedown = start;
+  card.ontouchstart = start;
 
-  function startDrag(e) {
-    startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+  function start(e) {
+    startX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
 
-    document.onmousemove = onMove;
-    document.ontouchmove = onMove;
+    document.onmousemove = move;
+    document.ontouchmove = move;
 
-    document.onmouseup = endDrag;
-    document.ontouchend = endDrag;
+    document.onmouseup = end;
+    document.ontouchend = end;
   }
 
-  function onMove(e) {
-    moveX = e.type.includes("touch") ? e.touches[0].clientX - startX : e.clientX - startX;
+  function move(e) {
+    moveX = e.type.includes("touch")
+      ? e.touches[0].clientX - startX
+      : e.clientX - startX;
 
     card.style.transform = `translateX(${moveX}px) rotate(${moveX * 0.05}deg)`;
 
-    const like = card.querySelector(".like-label");
-    const nope = card.querySelector(".nope-label");
+    let like = card.querySelector(".like-label");
+    let nope = card.querySelector(".nope-label");
 
     if (moveX > 50) {
       like.style.opacity = 1;
@@ -220,7 +212,7 @@ function addDrag(card) {
     }
   }
 
-  function endDrag() {
+  function end() {
     document.onmousemove = null;
     document.onmouseup = null;
 
@@ -237,7 +229,7 @@ function addDrag(card) {
 }
 
 function swipe(type) {
-  swipeAction(activeCard, type);
+  swipeAction(active, type);
 }
 
 function swipeAction(card, type) {
@@ -256,8 +248,8 @@ function swipeAction(card, type) {
     current--;
 
     if (current >= 0) {
-      activeCard = cards[current];
-      addDrag(activeCard);
+      active = cards[current];
+      addDrag(active);
     }
   }, 400);
 }
