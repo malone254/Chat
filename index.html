@@ -3,51 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MindRelief - Support When You Need It</title>
+<title>HeartConnect - Meaningful Connections</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    background:#f8faff;
+    background:linear-gradient(135deg,#fdf2f8,#eef2ff);
     color:#333;
+    overflow-x:hidden;
 }
 
 header{
+    width:90%;
+    max-width:1200px;
+    margin:25px auto;
+    padding:18px 30px;
+    background:rgba(255,255,255,0.9);
+    border-radius:20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 8%;
-    background:white;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .logo{
-    font-size:1.5rem;
-    font-weight:bold;
-    color:#4f46e5;
+    font-size:1.8rem;
+    font-weight:700;
+    color:#e11d48;
+}
+
+nav{
+    display:flex;
+    gap:15px;
 }
 
 nav a{
     text-decoration:none;
-    color:#333;
-    margin-left:20px;
+    color:#444;
+    padding:12px 22px;
+    border-radius:12px;
+    transition:.3s;
+    font-weight:600;
+}
+
+nav a:hover{
+    background:#ffe4e6;
+    color:#e11d48;
+}
+
+.cta-btn{
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(135deg,#e11d48,#ec4899);
+    padding:12px 24px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cta-btn:hover{
+    transform:translateY(-3px);
 }
 
 .hero{
-    min-height:90vh;
+    min-height:85vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:40px;
-    background:linear-gradient(135deg,#4f46e5,#7c3aed);
-    color:white;
+    padding:50px 20px;
 }
 
 .hero-content{
@@ -55,67 +85,105 @@ nav a{
 }
 
 .hero h1{
-    font-size:3.5rem;
+    font-size:4rem;
     margin-bottom:20px;
+    color:#be123c;
 }
 
 .hero p{
     font-size:1.2rem;
-    line-height:1.7;
-    margin-bottom:30px;
+    line-height:1.8;
+    margin-bottom:35px;
 }
 
-.btn{
-    display:inline-block;
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
     padding:15px 35px;
-    background:white;
-    color:#4f46e5;
     text-decoration:none;
     border-radius:50px;
-    font-weight:bold;
+    font-weight:600;
+    transition:.3s;
+}
+
+.primary-btn{
+    background:#e11d48;
+    color:white;
+}
+
+.secondary-btn{
+    background:white;
+    color:#e11d48;
+    border:2px solid #e11d48;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-4px);
 }
 
 .features{
-    padding:80px 8%;
-    text-align:center;
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:80px 0;
 }
 
 .features h2{
+    text-align:center;
     margin-bottom:50px;
-    font-size:2.2rem;
+    font-size:2.5rem;
 }
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:25px;
 }
 
 .card{
     background:white;
     padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
 }
 
 .card h3{
     margin-bottom:15px;
-    color:#4f46e5;
+    color:#e11d48;
 }
 
-.cta{
-    background:#eef2ff;
+.cta-section{
+    margin:80px auto;
+    width:90%;
+    max-width:1000px;
+    background:white;
+    padding:60px 30px;
+    border-radius:30px;
     text-align:center;
-    padding:80px 20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.cta h2{
+.cta-section h2{
+    font-size:2.5rem;
     margin-bottom:20px;
 }
 
 footer{
+    margin-top:60px;
+    padding:30px;
     text-align:center;
-    padding:25px;
     background:#111827;
     color:white;
 }
@@ -124,55 +192,79 @@ footer{
 <body>
 
 <header>
-    <div class="logo">MindRelief</div>
+    <div class="logo">❤️ HeartConnect</div>
+
     <nav>
         <a href="#">Home</a>
-        <a href="#">How It Works</a>
-        <a href="#">Supporters</a>
+        <a href="#">Matches</a>
+        <a href="#">Success Stories</a>
         <a href="#">Contact</a>
     </nav>
+
+    <a href="#" class="cta-btn">Join Now</a>
 </header>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Someone Is Ready To Listen</h1>
+        <h1>Find Someone Who Truly Understands You</h1>
+
         <p>
-            Connect with compassionate listeners and support coaches whenever
-            stress, anxiety, or life's challenges become overwhelming.
-            Find understanding, encouragement, and meaningful conversations.
+            HeartConnect helps people build genuine relationships,
+            meaningful friendships, and romantic connections in a safe,
+            supportive environment.
         </p>
-        <a href="#" class="btn">Get Started</a>
+
+        <div class="hero-buttons">
+            <a href="#" class="primary-btn">Start Matching</a>
+            <a href="#" class="secondary-btn">Learn More</a>
+        </div>
     </div>
 </section>
 
 <section class="features">
-    <h2>Why Choose MindRelief?</h2>
+    <h2>Why People Love HeartConnect</h2>
 
     <div class="cards">
+
         <div class="card">
-            <h3>Private Conversations</h3>
-            <p>Talk confidentially with people who genuinely care.</p>
+            <h3>💕 Meaningful Matches</h3>
+            <p>
+                Connect with people based on shared values,
+                interests, and personality compatibility.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Trusted Supporters</h3>
-            <p>Connect with experienced listeners and coaches.</p>
+            <h3>🔒 Safe Community</h3>
+            <p>
+                Enjoy a welcoming environment designed to encourage
+                respectful and authentic interactions.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Flexible Scheduling</h3>
-            <p>Find support at a time that works for you.</p>
+            <h3>🌍 Real Connections</h3>
+            <p>
+                Meet people looking for friendships, companionship,
+                and long-term relationships.
+            </p>
         </div>
+
     </div>
 </section>
 
-<section class="cta">
-    <h2>You Don't Have To Carry Stress Alone</h2>
-    <p>Find support, guidance, and a listening ear today.</p>
+<section class="cta-section">
+    <h2>Your Next Connection Could Start Today</h2>
+
+    <p style="margin-bottom:30px;">
+        Join thousands of people discovering meaningful relationships.
+    </p>
+
+    <a href="#" class="primary-btn">Create Your Profile</a>
 </section>
 
 <footer>
-    <p>© 2026 MindRelief. All rights reserved.</p>
+    <p>© 2026 HeartConnect. All Rights Reserved.</p>
 </footer>
 
 </body>
