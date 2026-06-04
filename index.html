@@ -1,259 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tinder Clone</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Support Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-  font-family: Arial;
-  overflow: hidden;
-}
+        body {
+            background: #f4f7fb;
+            color: #333;
+        }
 
-/* HEADER */
-.header {
-  position: absolute;
-  top: 20px;
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 3px;
-}
+        header {
+            background: #4a6cf7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-/* DECK */
-.deck {
-  position: relative;
-  width: 320px;
-  height: 480px;
-}
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
 
-/* CARD */
-.card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  cursor: grab;
-  transition: transform 0.3s ease;
-}
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
 
-.card img {
-  width: 100%;
-  height: 80%;
-  object-fit: cover;
-}
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
 
-.info {
-  padding: 10px;
-}
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #4a6cf7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
 
-.name {
-  font-size: 20px;
-  font-weight: bold;
-}
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+        }
 
-.age {
-  color: gray;
-}
+        .card {
+            background: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-/* BUTTONS */
-.buttons {
-  position: absolute;
-  bottom: 30px;
-  display: flex;
-  gap: 40px;
-}
+        .card h3 {
+            margin-bottom: 10px;
+        }
 
-.btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
+        .price {
+            color: #4a6cf7;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-.nope {
-  background: #ff4d4d;
-  color: white;
-}
+        .payment {
+            background: white;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-.like {
-  background: #4dff88;
-  color: white;
-}
+        .payment input,
+        .payment select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
 
-/* LABELS */
-.label {
-  position: absolute;
-  top: 20px;
-  font-size: 40px;
-  font-weight: 800;
-  opacity: 0;
-  transition: 0.2s;
-}
-
-.like-label {
-  left: 20px;
-  color: #4dff88;
-}
-
-.nope-label {
-  right: 20px;
-  color: #ff4d4d;
-}
-</style>
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="header">VELORA</div>
+<header>
+    <h1>Stress Support Hub</h1>
+    <p>Connect with caring listeners and support coaches.</p>
+</header>
 
-<div class="deck" id="deck">
+<section class="hero">
+    <h1>You Don't Have to Face Stress Alone</h1>
+    <p>
+        Talk with trained listeners and support specialists through secure
+        one-on-one sessions. Book a session and get support when you need it.
+    </p>
+    <a href="#payment" class="btn">Book a Session</a>
+</section>
 
-  <div class="card">
-    <div class="label like-label">LIKE</div>
-    <div class="label nope-label">NOPE</div>
-
-    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1"/>
-    <div class="info">
-      <div class="name">Anna</div>
-      <div class="age">24 • Travel lover</div>
+<section class="services">
+    <div class="card">
+        <h3>30-Minute Support Call</h3>
+        <p>Speak privately with a listener who will provide emotional support.</p>
+        <div class="price">$10</div>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="label like-label">LIKE</div>
-    <div class="label nope-label">NOPE</div>
-
-    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"/>
-    <div class="info">
-      <div class="name">Mike</div>
-      <div class="age">27 • Gym & Music</div>
+    <div class="card">
+        <h3>1-Hour Support Session</h3>
+        <p>More time to discuss challenges and receive guidance.</p>
+        <div class="price">$20</div>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="label like-label">LIKE</div>
-    <div class="label nope-label">NOPE</div>
-
-    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2"/>
-    <div class="info">
-      <div class="name">Sophie</div>
-      <div class="age">22 • Artist</div>
+    <div class="card">
+        <h3>Premium Coaching Session</h3>
+        <p>Dedicated session with an experienced support coach.</p>
+        <div class="price">$40</div>
     </div>
-  </div>
+</section>
 
-</div>
+<section class="payment" id="payment">
+    <h2>Book & Pay</h2>
 
-<div class="buttons">
-  <button class="btn nope" onclick="swipe('nope')">✖</button>
-  <button class="btn like" onclick="swipe('like')">❤</button>
-</div>
+    <form>
+        <input type="text" placeholder="Full Name" required>
 
-<script>
-let cards = document.querySelectorAll(".card");
-let current = cards.length - 1;
+        <input type="email" placeholder="Email Address" required>
 
-cards.forEach((card, i) => {
-  card.style.zIndex = i;
-});
+        <select required>
+            <option value="">Select a Session</option>
+            <option>30-Minute Support Call - $10</option>
+            <option>1-Hour Support Session - $20</option>
+            <option>Premium Coaching Session - $40</option>
+        </select>
 
-let active = cards[current];
-addDrag(active);
+        <button class="btn" type="submit">Proceed to Payment</button>
+    </form>
+</section>
 
-function addDrag(card) {
-  let startX = 0;
-  let moveX = 0;
-
-  card.onmousedown = start;
-  card.ontouchstart = start;
-
-  function start(e) {
-    startX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
-
-    document.onmousemove = move;
-    document.ontouchmove = move;
-
-    document.onmouseup = end;
-    document.ontouchend = end;
-  }
-
-  function move(e) {
-    moveX = e.type.includes("touch")
-      ? e.touches[0].clientX - startX
-      : e.clientX - startX;
-
-    card.style.transform = `translateX(${moveX}px) rotate(${moveX * 0.05}deg)`;
-
-    let like = card.querySelector(".like-label");
-    let nope = card.querySelector(".nope-label");
-
-    if (moveX > 50) {
-      like.style.opacity = 1;
-      nope.style.opacity = 0;
-    } else if (moveX < -50) {
-      like.style.opacity = 0;
-      nope.style.opacity = 1;
-    } else {
-      like.style.opacity = 0;
-      nope.style.opacity = 0;
-    }
-  }
-
-  function end() {
-    document.onmousemove = null;
-    document.onmouseup = null;
-
-    if (moveX > 120) {
-      swipeAction(card, "like");
-    } else if (moveX < -120) {
-      swipeAction(card, "nope");
-    } else {
-      card.style.transform = "translateX(0)";
-    }
-
-    moveX = 0;
-  }
-}
-
-function swipe(type) {
-  swipeAction(active, type);
-}
-
-function swipeAction(card, type) {
-  if (!card) return;
-
-  card.style.transition = "0.5s";
-
-  if (type === "like") {
-    card.style.transform = "translateX(500px) rotate(20deg)";
-  } else {
-    card.style.transform = "translateX(-500px) rotate(-20deg)";
-  }
-
-  setTimeout(() => {
-    card.remove();
-    current--;
-
-    if (current >= 0) {
-      active = cards[current];
-      addDrag(active);
-    }
-  }, 400);
-}
-</script>
+<footer>
+    <p>&copy; 2026 Stress Support Hub. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
